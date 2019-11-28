@@ -69,30 +69,5 @@ class AbsenController extends Controller
 
 	    	return redirect('/dashboard/persensi')->with('success', 'data berhasil auto alfa');
     }
-
-    // auto alfa cara kedua
-    // public function alfa_store()
-    // {
-    //     $user = User::all();
-    //     $absen = Persensi::all();
-    //     $cek = [];
-    //     $cek1 =[];
-    //     foreach ($user as $u) {
-    //         $cek[] = $u->NIM;
-    //     }
-        
-    //     foreach ($absen as $a) {
-    //         $cek1[] = $a->user_NIM;
-    //     }
-    //         if ($cek !== $cek1) {
-    //             dd($cek1);
-    //         } else {
-    //             //dd($cek1);
-    //             //dd($cek);
-    //         }
-            
-        
-        
-
-    // }	
+	
 }
