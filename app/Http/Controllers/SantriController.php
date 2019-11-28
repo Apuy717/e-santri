@@ -79,7 +79,10 @@ class SantriController extends Controller
     public function edit($id)
     {   
         $santri = Santri::find($id);
-        return view('santri/edit', ['santri'=>$santri]);
+        $kamar = Kamar::all();
+        $smester = Smester::all();
+        $prodi = Prodi::all();
+        return view('santri/edit', ['santri'=>$santri, 'kamar'=>$kamar, 'smester'=>$smester, 'prodi'=>$prodi]);
     }
 
     public function update($id, Request $request)

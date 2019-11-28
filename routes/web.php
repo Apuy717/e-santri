@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('login/login');
-// });
+Route::get('/', function () {
+    return view('login/login');
+});
 
 Route::get('/dashboard', 'SantriController@index');
 
@@ -24,8 +24,6 @@ Route::group(['middleware' => 'visitors'], function() {
 	Route::get('/register', 'LoginController@register');
 	Route::post('/register', 'LoginController@postRegister');
 	Route::post('/login', 'LoginController@postLogin');
-	Route::get('/', function () {
-    return view('login/login');
 });
 
 // Route khusus admin

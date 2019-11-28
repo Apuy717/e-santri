@@ -1,11 +1,11 @@
 @extends('layout.user')
 
 @section('title')
-  Admin-BackEnd Detile
+  E-Sanrti-profile
 @endsection
 
 @section('conten')
-	<div class="container">
+	<div class="container ml-5">
               @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
@@ -65,29 +65,31 @@
     @else
       <div class="mb-2">: Aktif</div>
     @endif
-    @endforeach
+    
   </div>
 
 </div>
 <div class="col-lg-3">
   <div class="card-body">
-     <div class="mb-5">{{$s->sosial_media}}</div>
+    <i class="fab fa-facebook-square"></i>
+     <span>{{$s->sosial_media}}</span>
+     @endforeach
      
 </div>  
 </div>
 </div>
-<div class="text-right mb-5">
-  <a href="/user/add_profile" class="btn btn-success p-2">Tambah Data Profile</a>
+<div class="text-right mr-5">
     @foreach($santri as $s)
       <a href="/user/update/{{$s->id}}" class="btn btn-info p-2">Ubah Data Profile</a>
     @endforeach
 </div>
-
+<hr class="sidebar-divider">
+@foreach($ortu as $o)
   <h4>Informasi Wali :</h4>
 <div class="row text-left">
   <div class="col-lg-4">
     <div class="card-body">
-      <div scope="col">Nama Ayah</div>
+      <div scope="col-2">Nama Ayah</div>
       <div class="mb-2">Nama ibu</div>
       <div class="mb-2">Tgl-lahir ayah</div>
       <div class="mb-2">No-Hp</div>
@@ -102,9 +104,8 @@
     </div>
   </div>
 
-  <div class="col-lg-5">
+  <div class="col-lg-4">
     <div class="card-body">
-    @foreach($ortu as $o)
       <div class="mb-2">: {{$o->nama_ayah}}</div>
       <div class="mb-2">: {{$o->nama_ibu}}</div>
       <div class="mb-2">: {{$o->tgl_lahir}}</div>
@@ -120,23 +121,12 @@
     @endforeach
     </div>
   </div>
-
-  <div class="col-lg-3">
-    <div class="card-body">
-      
-    </div>
-  </div>   
+  
 </div>
-  <div class="text-right mb-5">
-    <a href="/user/ad_ortu" class="btn btn-success p-2">Lengkapi Data Orang Tua</a>
+  <div class="text-right mr-5">
     @foreach($ortu as $or)
       <a href="/user/edit/ortu{{$or->id}}" class="btn btn-info p-2">Ubah Data Orang Tua</a>
     @endforeach
   </div>
-
-
 </div>
-        <!-- /.container-fluid -->
-</div>
-</script>
 @endsection

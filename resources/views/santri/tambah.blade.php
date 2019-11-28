@@ -4,6 +4,10 @@
   Admin-BackEnd Detile
 @endsection
 
+@section('header')
+<link href="{{url('admin/jquery_ui/jquery-ui.css')}}" rel="stylesheet">
+@endsection
+
 @section('conten')<br><br>
 
     <div class="container"> 
@@ -27,13 +31,14 @@
     <h3>Profil</h3><br>
     <form action="/user/ad_data/store" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
+    <input type="hidden" name="status" id="status" value="1">
       
       <div class="col-xl-10">
         <div class="form-group">
           <div id="upload-img" class="rounded-circle bg-secondary">
             <div class="form-group p-2 pt-5">
-              <label class="btn btn-light btn-sm mt-4  btn-block" for="input_gambar">Upload Foto</label>
-              <input type="file" class="form-control " name="gambar" id="input_gambar" placeholder="gambar" data-rule="gambar" data-msg="Please enter a valid gambar"/>
+              <label class="btn btn-light btn-sm mt-4 btn-block" for="input_gambar">Upload Foto</label>
+              <input type="file" class="form-control" name="gambar" id="input_gambar" placeholder="gambar" data-rule="gambar" data-msg="Please enter a valid gambar"/>
           </div>
           </div>
         </div>
@@ -51,17 +56,17 @@
           
           <div class="form-group">
             <label for="tempat_lahir">Tempat Lahir :</label>
-            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"/>
+            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required="on"/>
           </div>
 
           <div class="form-group">
             <label for="tgl_lahir">Tanggal Lahir :</label>
-            <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir" data-rule="tgl_lahir" />
+            <input type="text" class="form-control input-tanggal" name="tgl_lahir" id="tgl_lahir" data-rule="tgl_lahir" autocomplete="ogg" required="on"/>
           </div>
 
           <div class="form-group">
             <label for="alamat">Alamat Lengkap :</label>
-            <input type="text" class="form-control" name="alamat" id="alamat"data-rule="alamat" data-msg="Please enter a valid alamat" />
+            <input type="text" class="form-control" name="alamat" id="alamat"data-rule="alamat" data-msg="Please enter a valid alamat" required="on"/>
           </div>
         </div>
 
@@ -74,7 +79,7 @@
               
         <div class="form-group col-lg-6">
           <label for="awal_mondok">Awal Mondok :</label>
-          <input type="text" name="awal_mondok" class="form-control" id="awal_mondok" required="on">
+          <input type="text" name="awal_mondok" class="form-control input-tanggal" id="awal_mondok" required="on" autocomplete="off"b required="on">
         </div> 
 
         <div class="form-group col-lg-6">
@@ -92,14 +97,6 @@
           <select class="custom-select" name="jk" id="jk">
             <option value="L">Laki-Laki</option>
             <option value="P">Perempuan</option>
-        </select>
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label for="status">Status :</label>
-          <select class="custom-select" name="status" id="status">
-            <option value="1">aktif</option>
-            <option value="0">non aktif</option>
         </select>
         </div>
 
@@ -131,7 +128,7 @@
         </select>
       </div>
 
-      <div class="form-group col-lg-3">
+      <div class="form-group col-lg-6">
         <label for="madrasah_id">Madrasah :</label>
         <select class="custom-select" name="madrasah_id" id="madrasah_id">
           <option value="1">Idad</option>
@@ -140,7 +137,7 @@
           </select>
         </div>
 
-      <div class="form-group col-lg-3">
+      <div class="form-group col-lg-6">
         <label for="kls_id">Kelas Madrasah :</label>
         <select class="custom-select" name="kls_id" id="kls_id">
           <option value="1">Satu</option>
@@ -160,4 +157,18 @@
   </div>
 </div>
 </center><br>
+@endsection
+
+@section('footer')
+<script src="{{url('admin/js/bootstrap-datetimepicker.js')}}"></script>
+<script src="{{url('admin/jquery_ui/jquery-ui.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+   $('.input-tanggal').datepicker({
+            dateFormat:'yy-mm-dd',
+        });
+
+  });
+</script>
 @endsection
