@@ -47,7 +47,7 @@ class LoginController extends Controller
 		$role = Sentinel::findRoleBySlug('user');
 		$role->users()->attach($user);
 
-		return redirect('/login')->with('success', 'selamat anda berhasil Registrasi');
+		return redirect('/')->with('success', 'selamat anda berhasil Registrasi');
 	}
 
     public function postLogin(Request $request)
@@ -79,6 +79,7 @@ class LoginController extends Controller
     {
     	Sentinel::logout();
 
-    	return redirect('/login');
+    	return redirect('/');
     }
 }
+?>
