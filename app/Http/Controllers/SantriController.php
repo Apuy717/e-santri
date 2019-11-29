@@ -13,7 +13,6 @@ class SantriController extends Controller
     public function index()
     {
 	   	 $santri =Santri::all();
-        //$santri = Santri::where('NIM', '2019111')->get();
     	return view('admin/index',['santri'=> $santri]);
     }
 
