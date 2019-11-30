@@ -72,13 +72,27 @@ class AbsenController extends Controller
 	    
     }
     // tampilkan hasil persensi 
-    public function getAllPersensi()
+    public function getAllPersensi(Request $request)
     {
-        // $start_date = $date . ' 00:00:00';
-        // $end_date = $date . ' 23:59:00';
-        //$user = User::whereBetween('tgl' , [$start_date , $end_date]);
-        $user = User::all();
-        return view('admin/monitoring/index', ['user'=>$user]);
+        date_default_timezone_set('Asia/Jakarta');
+        $dat1 = $request->date1;
+        $dat2 = $request->date2;
+        if (empty($dat1 && $dat2)) {
+            $date1 = date('Y:m:d');
+            $date2 = date('Y:m:d');
+        } else {
+            $date1 = $request->date1;
+            $date2 = $request->date2;
+        }
+        //dd($date1, $date2);
+
+        $start_date = $date1 . ' 00:00:00';
+        $end_date = $date2 . ' 23:59:00';
+
+
+        $persensi = Persensi::whereBetween('tgl' , [$start_date , $end_date])->get();
+
+        return view('admin/monitoring/index', ['persensi'=>$persensi]);
     }
 	
 }

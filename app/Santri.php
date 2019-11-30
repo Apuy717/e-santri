@@ -47,9 +47,9 @@ class Santri extends Model
     {
         return $this->hasMany('App\Ortu', 'santri_NIM','NIM');
     }
-    public function users()
+    public function user()
     {
-        return $this->belongsTo('App\Santri', 'NIM');
+        return $this->belongsTo('App\Santri', 'user_NIM','NIM');
     }
     public function kls()
     {

@@ -5,6 +5,13 @@
 
 @section('conten')
 	<div class="container-fluid">
+		<form action="{{url('/dashboard/monitoring')}}" method="get">
+			<label for="date1">Start Date</label>
+			<input type="text" name="date1" id="date1">
+			<label for="date2">End Date</label>
+			<input type="text" name="date2" id="date2">
+			<button type="submit" name="submit">filter</button>
+		</form><hr>
 		<h3>kehadiran anak santri</h3>
 		<hr>
 	<div class="card shadow mb-4">
@@ -39,28 +46,30 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                @foreach($user as $u)
-                  	@foreach($u->persensi as $p)
-                  <tr>
-                  	<td>{{$u->NIM}}</td>
-                  	<td>{{$u->first_name}} {{$u->last_name}}</td>
-                  	<td>As-Syafaah</td>
-                  	<td>{{$p->tgl}}</td>
-                  	<td>{{$p->waktu}}</td>
-                  	<td>{{$p->Waktu->waktu}}</td>
-                  	@if($p->H == 0)
-                  	<td>Alfa</td>
-                  	@elseif($p->H == 1)
-                  	<td>Hadir</td>
-                  	@elseif($p->H == 2)
-                  	<td>Izin</td>
-                  	@elseif($p->H == 3)
-                  	<td>Sakit</td>
-                  	@endif
-                  	<td>{{$p->keterangan}}</td>
-                  </tr>
+                  	@foreach($persensi as $p)
+                  	@foreach($p->user->santri as $s)
+                  	<tr>
+                  		<td>{{$p->user_NIM}}</td>
+                  		<td>{{$p->user->first_name}} {{$p->user->last_name}}</td>
+                  		<td>{{$s->kamar->kamar}}</td>
+                  		<td>{{$p->tgl}}</td>
+                  		<td>{{$p->waktu}}</td>
+                  		<td>{{$p->Waktu->waktu}}</td>
+                  			<td>
+                  				@if($p->H == 0)
+                  					Alfa
+                  			@elseif($p->H == 1)
+                  					Hadir
+                  			@elseif($p->H == 2)
+                  					Ijin
+                  			@elseif($p->H == 3)
+                  					Sakit
+                  			@endif
+                  		</td>
+                  		<td>{{$p->keterangan}}</td>
+                  	</tr>
                   	@endforeach
-                  @endforeach
+                  	@endforeach
                   </tbody>
                 </table>
               </div>

@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function santri()
     {
-        return $this->hasMany('App\Santri');
+        return $this->hasMany('App\Santri', 'user_NIM', 'NIM');
     }
     public function persensi()
     {
