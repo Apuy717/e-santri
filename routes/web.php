@@ -45,6 +45,7 @@ Route::group(['middleware' => 'admin'], function(){
 	Route::get('/dashboard/persensi', 'Persensi\AbsenController@index');
 	Route::post('/dashboard/absensi', 'Persensi\AbsenController@store');
 	Route::post('/dashboard/persensi/alfa', 'Persensi\AbsenController@alfa_store');
+	Route::get('/dashboard/monitoring', 'Persensi\AbsenController@getAllPersensi');
 });
 
 // Route khusus User

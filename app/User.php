@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Santri');
     }
+    public function persensi()
+    {
+        return $this->hasMany('App\Persensi\Persensi', 'user_NIM', 'NIM');
+    }
 }

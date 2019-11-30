@@ -48,26 +48,37 @@ class AbsenController extends Controller
 
     public function alfa_store(Request $request)
     {
-    	$user = User::all();
+    	//$user = User::all();
     	date_default_timezone_set('Asia/Jakarta');
     	$jam = date('H:i:s');
     	$tgl = date('Y:m:d');
 
-        $absen = Persensi::all();
+        $absen = Persensi::select('user_NIM')->where('tgl', $tgl)->where('waktu_id', $request->waktu_id)->get();
+        $user = User::select('NIM')->whereNotIn('NIM', $absen)->get();
+        //dd($user);
+         
+        foreach ($user as $row) {
+           $u = $row->NIM;
+           $persensi = new Persensi;
+           $persensi->user_NIM = $u;
+           $persensi->tgl = $tgl;
+           $persensi->waktu =$jam;
+           $persensi->H =0;
+           $persensi->waktu_id = $request->waktu_id;
+           $persensi->save();
+        }
 
-        $cek =[];
-    		foreach ($user as $row) {
-            $cek[] = $row->NIM;
-	   	 }
-        // dd($cek);
-
-         // $abss =[];
-         // foreach () {
-         // $abss = Persensi::where('user_NIM', $cek)->where('tgl',$tgl)->where('waktu_id', $request->waktu_id)->get();
-         // }
-         // dd($abss);
-
-	    	return redirect('/dashboard/persensi')->with('success', 'data berhasil auto alfa');
+        return redirect('/dashboard/persensi')->with('success', 'data berhasil auto alfa');
+	    
+    }
+    // tampilkan hasil persensi 
+    public function getAllPersensi()
+    {
+        // $start_date = $date . ' 00:00:00';
+        // $end_date = $date . ' 23:59:00';
+        //$user = User::whereBetween('tgl' , [$start_date , $end_date]);
+        $user = User::all();
+        return view('admin/monitoring/index', ['user'=>$user]);
     }
 	
 }

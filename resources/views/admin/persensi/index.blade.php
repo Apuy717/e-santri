@@ -9,6 +9,13 @@
 @endsection
 
 @section('conten')
+  <div class="container">
+              @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong>{{ $message }}</strong>
+          </div>
+          @endif <br>
  <div class="container-fluid">
     <button type="text" class="button">filter</button>
             <form  action="/dashboard/persensi/alfa" method="post">
@@ -38,10 +45,6 @@
 <video id="preview" class="img-fluid img-thumbnail mx-auto d-block" alt="..."></video>
 <audio id="beep" src="{{url('audio/beep.mp3')}}"></audio>
 
-<!-- </div>
-    <video id="preview" alt="Responsive image"></video><br>
-    
- </div> -->
 @endsection
 
 @section('footer')
