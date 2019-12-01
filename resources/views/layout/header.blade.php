@@ -24,4 +24,3 @@
   @yield('header')
 
 </head>
-
