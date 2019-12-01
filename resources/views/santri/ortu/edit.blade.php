@@ -41,59 +41,69 @@
 
         <input type="hidden" name="users_NIM" class="form-control" id="users_NIM" placeholder="user_NIM" required="on" value="{{Sentinel::getUser()->NIM}}">
 
-    <div class="form-row mt-5">
-      <div class="form-group col-lg-12">
+    <div class="form-row mt-5 text-left">
+      <div class="form-group col-lg-12 text-center">
         <h4>Ubah Informasi</h4>
       </div>
-
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" placeholder="nama_ayah" value="{{$ortu->nama_ayah}}" />
+      <div class="form-group col-lg-6 mt-2">
+        <label for="nama_ayah">Nama Ayah :</label>
+        <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" value="{{$ortu->nama_ayah}}" />
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="nama_ibu" id="nama_ibu" placeholder="nama_ibu" value="{{$ortu->nama_ibu}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="nama_ibu">Nama Ibu :</label>
+        <input type="text" class="form-control" name="nama_ibu" id="nama_ibu" value="{{$ortu->nama_ibu}}"/>
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir" placeholder="tgl_lahir Ayah" value="{{$ortu->tgl_lahir}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="tgl_lahir">Tanggal Lahir :</label>
+        <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir" value="{{$ortu->tgl_lahir}}"/>
       </div>
       
-      <div class="form-group col-lg-6">
-        <input type="number" name="no_hp" class="form-control" id="no_hp" placeholder="no_hp" required="on" value="{{$ortu->no_hp}}">
+      <div class="form-group col-lg-6 mt-2">
+        <label for="no_hp">Nomer HP :</label>
+        <input type="number" name="no_hp" class="form-control" id="no_hp" value="{{$ortu->no_hp}}">
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" value="{{$ortu->alamat}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="alamat">Alamat :</label>
+        <input type="text" class="form-control" name="alamat" id="alamat" value="{{$ortu->alamat}}"/>
       </div>
       
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="agama" id="agama" placeholder="agama" value="{{$ortu->agama}}" />
+      <div class="form-group col-lg-6 mt-2">
+        <label for="agama">Agama :</label>
+        <input type="text" class="form-control" name="agama" id="agama" value="{{$ortu->agama}}" />
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="pengamal" id="pengamal" placeholder="pengamal" value="{{$ortu->pengamal}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="pengamal">Pengamal :</label>
+        <input type="text" class="form-control" name="pengamal" id="pengamal" value="{{$ortu->pengamal}}"/>
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="negara" id="negara" placeholder="negara" value="{{$ortu->negara}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="negara">Negara :</label>
+        <input type="text" class="form-control" name="negara" id="negara" value="{{$ortu->negara}}"/>
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="pendidikan_akhir" id="pendidikan_akhir" placeholder="pendidikan_akhir" value="{{$ortu->pendidikan_akhir}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="pendidikan_akhir">Pendidikan :</label>
+        <input type="text" class="form-control" name="pendidikan_akhir" id="pendidikan_akhir" value="{{$ortu->pendidikan_akhir}}"/>
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="jurusan" id="jurusan" placeholder="jurusan" value="{{$ortu->jurusan}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="jurusan">Keahlian :</label>
+        <input type="text" class="form-control" name="jurusan" id="jurusan" value="{{$ortu->jurusan}}"/>
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" placeholder="pekerjaan" value="{{$ortu->pekerjaan}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="pekerjaan">Pekerjaan :</label>
+        <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" value="{{$ortu->pekerjaan}}"/>
       </div>
 
-      <div class="form-group col-lg-6">
-        <input type="text" class="form-control" name="penghasilan" id="penghasilan" placeholder="penghasilan" value="{{$ortu->penghasilan}}"/>
+      <div class="form-group col-lg-6 mt-2">
+        <label for="penghasilan">Penghasilan :</label>
+        <input type="text" class="form-control" name="penghasilan" id="penghasilan" value="{{$ortu->penghasilan}}"/>
       </div>
-
 
     </div>
   </div>    
@@ -102,6 +112,7 @@
         <button class="btn btn-success btn-block" type="submit" name="submit" title="Send Message">Save All</button>
     </div>
   </form>
+</div>
 </div>
 </center><br>
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 
 @section('conten')
-	<div class="container ml-5">
+	<div class="container pl-4">
               @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
@@ -17,11 +17,11 @@
     @foreach($santri as $s)
     <img id="upload-img" src="{{ url('/santri/img/'.$s->gambar )}}" class="rounded-circle" alt="...">
   </div>
-  <h4 class=" mt-5">Informasi Pribadi :</h4>
+  <h4 class=" mt-5 ml-2">Informasi Pribadi :</h4>
 
 <div class="row text-left">
   
-<div class="col-lg-4">
+<div class="col-md-4" id="content-40">
   <div class="card-body mb-5">
     <div class="mb-2">NIM</div>
     <div class="mb-2">Nama Lengkap</div>
@@ -40,7 +40,7 @@
 </div>
 
 
-<div class="col-lg-5">
+<div class="col-md-5" id="content-40">
   <div class="card-body mb-5">
     <div class="mb-2">: {{Sentinel::getUser()->NIM}}</div>
     <div class="mb-2">: {{Sentinel::getUser()->first_name}} {{Sentinel::getUser()->last_name}}</div>
@@ -69,7 +69,7 @@
   </div>
 
 </div>
-<div class="col-lg-3">
+<div class="col-lg-3" id="content-20">
   <div class="card-body">
     <i class="fab fa-facebook-square"></i>
      <span>{{$s->sosial_media}}</span>
@@ -87,9 +87,10 @@
 @foreach($ortu as $o)
   <h4>Informasi Wali :</h4>
 <div class="row text-left">
-  <div class="col-lg-4">
+
+  <div class="col-lg-4 col-sm-4" id="content-40">
     <div class="card-body">
-      <div scope="col-2">Nama Ayah</div>
+      <div class="mb-2">Nama Ayah</div>
       <div class="mb-2">Nama ibu</div>
       <div class="mb-2">Tgl-lahir ayah</div>
       <div class="mb-2">No-Hp</div>
@@ -104,7 +105,7 @@
     </div>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-5 col-sm-5" id="content-40">
     <div class="card-body">
       <div class="mb-2">: {{$o->nama_ayah}}</div>
       <div class="mb-2">: {{$o->nama_ibu}}</div>
@@ -123,7 +124,7 @@
   </div>
   
 </div>
-  <div class="text-right mr-5">
+  <div class="text-right mr-5 mb-5">
     @foreach($ortu as $or)
       <a href="/user/edit/ortu{{$or->id}}" class="btn btn-info p-2">Ubah Data Orang Tua</a>
     @endforeach

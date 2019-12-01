@@ -159,6 +159,7 @@
     </form>
   </div>
 </div>
+</div>
 </center><br>
 @endsection
 
