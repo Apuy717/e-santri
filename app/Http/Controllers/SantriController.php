@@ -36,7 +36,7 @@ class SantriController extends Controller
 		$nama_file = time()."_".$file->getClientOriginalName();
  
       	 // isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'santri/img';
+		$tujuan_upload = 'public/santri/img';
 		$file->move($tujuan_upload,$nama_file);
         
       $san = Santri::where('user_NIM', $request->user_NIM)->get();
@@ -96,7 +96,7 @@ class SantriController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
  
                 // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'santri/img';
+        $tujuan_upload = 'public/santri/img';
         $file->move($tujuan_upload,$nama_file);
 
         $santri = Santri::find($id);

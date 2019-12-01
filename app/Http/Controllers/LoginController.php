@@ -28,7 +28,7 @@ class LoginController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
  
         // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'santri/verif';
+        $tujuan_upload = 'public/santri/verif';
         $file->move($tujuan_upload,$nama_file);
         //dd($nama_file);
 		// $user = Sentinel::register($request->all());

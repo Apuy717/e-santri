@@ -21,7 +21,7 @@ class OrtuController extends Controller
           $file = $request->file('gambar');
             if ($file > 0){
                 $nama_file = time()."_".$file->getClientOriginalName();
-                $tujuan_upload = 'santri/ortu';
+                $tujuan_upload = 'public/santri/ortu';
                 $file->move($tujuan_upload,$nama_file);
 		}else{
 			$nama_file ='kosong';
@@ -57,7 +57,7 @@ class OrtuController extends Controller
     public function edit($id)
     {
         $ortu = Ortu::find($id);
-        return view('santri/ortu/edit', ['ortu'=>$ortu]);
+        return view('public/santri/ortu/edit', ['ortu'=>$ortu]);
     }
     public function update($id, Request $request)
     {
