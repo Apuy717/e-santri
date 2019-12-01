@@ -83,6 +83,7 @@
       <a href="/user/update/{{$s->id}}" class="btn btn-info p-2">Ubah Data Profile</a>
     @endforeach
 </div>
+<!-- hr -->
 <hr class="sidebar-divider">
 @foreach($ortu as $o)
   <h4>Informasi Wali :</h4>
