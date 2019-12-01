@@ -4,6 +4,10 @@
   Admin-BackEnd Detile
 @endsection
 
+@section('header')
+<link href="{{url('admin/jquery_ui/jquery-ui.css')}}" rel="stylesheet">
+@endsection
+
 @section('conten')<br><br>
 
     <div class="container"> 
@@ -56,7 +60,7 @@
 
       <div class="form-group col-lg-6 mt-2">
         <label for="tgl_lahir">Tanggal Lahir Ayah:</label>
-        <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir" required="on"/>
+        <input type="text" class="form-control input-tanggal" name="tgl_lahir" id="tanggal" required="on"/>
       </div>
       
       <div class="form-group col-lg-6 mt-2">
@@ -83,8 +87,11 @@
       </div>
 
       <div class="form-group col-lg-6 mt-2">
-        <label for="negara">Negara :</label>
-        <input type="text" class="form-control" name="negara" id="negara" placeholder="negara" />
+        <label for="negara">Kewarganegaraan :</label>
+        <select id="negara" name="negara" class="custom-select">
+          <option value="indonesia">Indonesia</option>
+          <option value="luar-negri">Luar Negri</option>
+        </select>
       </div>
 
       <div class="form-group col-lg-6 mt-2">
@@ -133,3 +140,19 @@
   });
 </script>
 @endsection
+
+
+@section('footer')
+<script src="{{url('admin/js/bootstrap-datetimepicker.js')}}"></script>
+<script src="{{url('admin/jquery_ui/jquery-ui.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+   $('.input-tanggal').datepicker({
+            dateFormat:'yy-mm-dd',
+        });
+
+  });
+</script>
+@endsection
+
