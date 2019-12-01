@@ -50,7 +50,7 @@
                     <h1 class="h1 mb-4">E-SANTRI</h1>
                   </div>
 
-                  <form class="mb-4" action="/login" method="post">
+                  <form class="mb-4" action="{{url('/login')}}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group mb-3">
                       <input type="email" class="form-control" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukkan Email " autofocus="on">
