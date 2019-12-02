@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('login/login');
-});
+})->middleware('visitors');
 
 Route::get('/dashboard', 'SantriController@index');
 

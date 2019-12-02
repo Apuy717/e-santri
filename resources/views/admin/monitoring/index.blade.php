@@ -11,9 +11,9 @@
 	<div class="container-fluid">
 		<form action="{{url('/dashboard/monitoring')}}" method="get">
 			<label for="date1">Start Date</label>
-			<input type="text" name="date1" id="date1" class="input-tanggal">
+			<input type="text" name="date1" id="date1" class="input-tanggal" autocomplete="of">
 			<label for="date2">End Date</label>
-			<input type="text" name="date2" id="date2" class="input-tanggal">
+			<input type="text" name="date2" id="date2" class="input-tanggal" autocomplete="of">
 			<button type="submit" name="submit">filter</button>
 		</form><hr>
 		<h3>kehadiran anak santri</h3>
