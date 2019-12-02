@@ -3,13 +3,17 @@
 	Monitoring|kehadiran
 @endsection
 
+@section('header')
+<link href="{{url('admin/jquery_ui/jquery-ui.css')}}" rel="stylesheet">
+@endsection
+
 @section('conten')
 	<div class="container-fluid">
 		<form action="{{url('/dashboard/monitoring')}}" method="get">
 			<label for="date1">Start Date</label>
-			<input type="text" name="date1" id="date1">
+			<input type="text" name="date1" id="date1" class="input-tanggal">
 			<label for="date2">End Date</label>
-			<input type="text" name="date2" id="date2">
+			<input type="text" name="date2" id="date2" class="input-tanggal">
 			<button type="submit" name="submit">filter</button>
 		</form><hr>
 		<h3>kehadiran anak santri</h3>
@@ -75,4 +79,18 @@
               </div>
             </div>
           </div>
+@endsection
+
+@section('footer')
+<script src="{{url('admin/js/bootstrap-datetimepicker.js')}}"></script>
+<script src="{{url('admin/jquery_ui/jquery-ui.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+   $('.input-tanggal').datepicker({
+            dateFormat:'yy-mm-dd',
+        });
+
+  });
+</script>
 @endsection
