@@ -67,7 +67,7 @@
                 </form>
                 <hr>
                 <div>
-                  <p class="small">Sudah Punya Akun?<a href="/login"> Login Disini!</a></p>
+                  <p class="small">Sudah Punya Akun?<a href="{{url('/')}}"> Login Disini!</a></p>
                 </div>
                 </div>
               </div>
