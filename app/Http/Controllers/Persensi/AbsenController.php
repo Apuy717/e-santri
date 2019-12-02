@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Persensi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\persensi\Persensi;
+use App\Persensi\Persensi;
 use App\User;
 
 class AbsenController extends Controller
