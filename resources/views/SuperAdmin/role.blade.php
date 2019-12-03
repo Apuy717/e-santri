@@ -38,7 +38,7 @@
                   <tbody>
                   	@foreach($role as $r)
 	                    <tr>
-                          <td>{{$r->user["first_name"]}} {{$r->user["last_name"]}}</td> 
+                          <td>{{$r->user->first_name}} {{$r->user->last_name}}</td> 
 	                      <td>
 	                      	@if($r->role_id == 1)
 	                      		<p class="badge badge-success">Admin</p>

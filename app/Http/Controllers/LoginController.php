@@ -87,9 +87,8 @@ class LoginController extends Controller
 
     public function role()
     {
-        $role = Role::all();
-        $user = User::all();
-        return view('SuperAdmin/role', ['role' => $role, 'user'=>$user]);
+        $role = Role::with('user')->get();
+        return view('SuperAdmin/role', ['role' => $role]);
     }
 
     public function edtRole($id, Request $request)
