@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Persensi\Persensi', 'user_NIM', 'NIM');
     }
+
+    public function role()
+    {
+        return $this->hasMany('App\Role\Role');
+    }
 }

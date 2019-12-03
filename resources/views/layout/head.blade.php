@@ -181,10 +181,10 @@
                 </a>
                  <div class="dropdown-divider"></div>
                 @if(Sentinel::check())
-                <form action="/logo" method="post" id="tes">
+                <form action="{{url('/logo')}}" method="post" id="tes">
                   {{ csrf_field() }}
 
-                  <center><button type="submit" name="submit" class="badge badge-secondary ">logout</button></center>
+                  <center><button type="submit" name="submit" class="badge badge-danger">logout</button></center>
                 </a>
                 </form>
                 @else   

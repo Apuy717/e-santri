@@ -29,25 +29,28 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        User
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-inbox"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Pages</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Santri Screens:</h6>
             <a class="collapse-item" href="/dashboard/verifikasi">Verifikasi User</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Data Santri:</h6>
-            <a class="collapse-item" href="404.html">Data Al Santri</a>
+            @if(Sentinel::Check() && Sentinel::getUser()->roles()->first()->slug == 'super admin')
+              <div class="collapse-divider"></div>
+              <h6 class="collapse-header">Update User:</h6>
+              <a class="collapse-item" href="{{url('/dashboard/role')}}">User update Role</a>
+              @endif
           </div>
         </div>
       </li>
+
 
       <li class="nav-item">
         <a class="nav-link" href="{{url('/dashboard/persensi')}}">
@@ -72,7 +75,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Master Data Santri:</h6>
             <a class="collapse-item" href="/dashboard/master/santri">Data All Santri</a>
-            <a class="collapse-item" href="/dashboard/pendidikan">Data Pendidikan</a>
           </div>
         </div>
       </li>

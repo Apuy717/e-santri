@@ -57,7 +57,7 @@ class OrtuController extends Controller
     public function edit($id)
     {
         $ortu = Ortu::find($id);
-        return view('public/santri/ortu/edit', ['ortu'=>$ortu]);
+        return view('/santri/ortu/edit', ['ortu'=>$ortu]);
     }
     public function update($id, Request $request)
     {

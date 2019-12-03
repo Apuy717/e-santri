@@ -21,6 +21,9 @@ class VisitorsMiddlware
         }
         elseif (Sentinel::getUser()->roles()->first()->slug == 'admin') {
            return redirect('/dashboard');
+       }
+        elseif (Sentinel::getUser()->roles()->first()->slug == 'super admin') {
+           return redirect('/dashboard');
         }
         elseif (Sentinel::getUser()->roles()->first()->slug == 'user') {
             return redirect('/user');

@@ -26,11 +26,11 @@
                     <option value="3">subuh</option>     
                 </select>
             <button type="submit" name="submit">simpan auto alfa</button>
-        </form><br>
-
+        </form><hr>
+        <h3>absen manual</h3> <hr>
     <form method="post" action="/dashboard/absensi">
         {{ csrf_field() }}
-        <input type="text" name="user_NIM">
+        <input type="text" name="user_NIM" placeholder="NIM">
         <select id="ipilih" name="waktu_id" >
         <option value="1">magrib</option>
         <option value="2">isya</option>

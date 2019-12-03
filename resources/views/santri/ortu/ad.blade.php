@@ -60,7 +60,7 @@
 
       <div class="form-group col-lg-6 mt-2">
         <label for="tgl_lahir">Tanggal Lahir Ayah:</label>
-        <input type="text" class="form-control input-tanggal" name="tgl_lahir" id="tanggal" required="on"/>
+        <input type="button" class="form-control input-tanggal" name="tgl_lahir" id="tanggal" required="on"/>
       </div>
       
       <div class="form-group col-lg-6 mt-2">
@@ -75,7 +75,15 @@
       
       <div class="form-group col-lg-6 mt-2">
         <label for="agama">Agama :</label>
-        <input type="text" class="form-control" name="agama" id="agama" required="on"/>
+        <select name="agama" id="agama" class="form-control">
+          <option value="islam">islam</option>
+          <option value="budha">budha</option>
+          <option value="hindu">hindu</option>
+          <option value="kong hu'cu">kong hu cu</option>
+          <option value="kristen">kristen</option>
+          <option value="katolik">katolik</option>
+          <option value="lain-lain">Lain-lain</option>
+        </select>
       </div>
 
       <div class="form-group col-lg-6 mt-2">

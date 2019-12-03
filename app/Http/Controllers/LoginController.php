@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Sentinel;
 use Activation;
 use App\User;
+use App\Role\Role;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 
@@ -59,6 +60,8 @@ class LoginController extends Controller
 
                 if (Sentinel::getUser()->roles()->first()->slug == 'admin')
                     return redirect('/dashboard');
+                        elseif (Sentinel::getUser()->roles()->first()->slug == 'super admin')
+                            return redirect('/dashboard/persensi');
                         elseif (Sentinel::getUser()->roles()->first()->slug == 'user')
                             return redirect('/user');
                     } else {
@@ -80,6 +83,18 @@ class LoginController extends Controller
     	Sentinel::logout();
 
     	return redirect('/');
+    }
+
+    public function role()
+    {
+        $role = Role::all();
+        return view('SuperAdmin/role', ['role'=>$role]);
+    }
+
+    public function edtRole($id, Request $request)
+    {
+        $role = Role::where('user_id', $id)->update(['role_id' => $request->role_id]);
+        return redirect('/dashboard/role')->with('success', 'Role Berhasil Di Update...!');
     }
 }
 ?>

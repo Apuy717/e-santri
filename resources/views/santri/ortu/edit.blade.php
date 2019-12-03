@@ -4,6 +4,10 @@
   Admin-BackEnd Detile
 @endsection
 
+@section('header')
+<link href="{{url('admin/jquery_ui/jquery-ui.css')}}" rel="stylesheet">
+@endsection
+
 @section('conten')<br><br>
 
     <div class="container"> 
@@ -57,7 +61,7 @@
 
       <div class="form-group col-lg-6 mt-2">
         <label for="tgl_lahir">Tanggal Lahir :</label>
-        <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir" value="{{$ortu->tgl_lahir}}"/>
+        <input type="datepicker" autocomplete="of" class="form-control input-tanggal" name="tgl_lahir" id="tgl_lahir" value="{{$ortu->tgl_lahir}}"/>
       </div>
       
       <div class="form-group col-lg-6 mt-2">
@@ -72,21 +76,36 @@
       
       <div class="form-group col-lg-6 mt-2">
         <label for="agama">Agama :</label>
-        <input type="text" class="form-control" name="agama" id="agama" value="{{$ortu->agama}}" />
+          <select name="agama" id="agama" class="form-control">
+          <option value="islam">islam</option>
+          <option value="budha">budha</option>
+          <option value="hindu">hindu</option>
+          <option value="kong hu'cu">kong hu cu</option>
+          <option value="kristen">kristen</option>
+          <option value="katolik">katolik</option>
+          <option value="lain-lain">Lain-lain</option>
+        </select>
       </div>
 
       <div class="form-group col-lg-6 mt-2">
         <label for="pengamal">Pengamal :</label>
-        <input type="text" class="form-control" name="pengamal" id="pengamal" value="{{$ortu->pengamal}}"/>
+        <select class="custom-select" id="pengamal" name="pengamal">
+          <option value="{{$ortu->pengamal}}">{{$ortu->pengamal}}</option>
+          <option value="Ya">Sudah</option>
+          <option value="Tidak">Belum</option>
+        </select>
       </div>
 
       <div class="form-group col-lg-6 mt-2">
-        <label for="negara">Negara :</label>
-        <input type="text" class="form-control" name="negara" id="negara" value="{{$ortu->negara}}"/>
+        <label for="negara">Kewarganegaraan :</label>
+        <select id="negara" name="negara" class="custom-select">
+          <option value="indonesia">Indonesia</option>
+          <option value="luar-negri">Luar Negri</option>
+        </select>
       </div>
 
       <div class="form-group col-lg-6 mt-2">
-        <label for="pendidikan_akhir">Pendidikan :</label>
+        <label for="pendidikan_akhir">Pendidikan Akhir :</label>
         <input type="text" class="form-control" name="pendidikan_akhir" id="pendidikan_akhir" value="{{$ortu->pendidikan_akhir}}"/>
       </div>
 
@@ -115,4 +134,17 @@
 </div>
 </div>
 </center><br>
+@endsection
+@section('footer')
+<script src="{{url('admin/js/bootstrap-datetimepicker.js')}}"></script>
+<script src="{{url('admin/jquery_ui/jquery-ui.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+   $('.input-tanggal').datepicker({
+            dateFormat:'yy-mm-dd',
+        });
+
+  });
+</script>
 @endsection

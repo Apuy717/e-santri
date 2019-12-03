@@ -126,7 +126,7 @@
 </div>
   <div class="text-right mr-5 mb-5">
     @foreach($ortu as $or)
-      <a href="/user/edit/ortu{{$or->id}}" class="btn btn-info p-2">Ubah Data Orang Tua</a>
+      <a href="/user/edit/ortu/c/{{$or->id}}" class="btn btn-info p-2">Ubah Data Orang Tua</a>
     @endforeach
   </div>
 </div>
