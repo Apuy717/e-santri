@@ -61,7 +61,7 @@ class LoginController extends Controller
                 if (Sentinel::getUser()->roles()->first()->slug == 'admin')
                     return redirect('/dashboard');
                         elseif (Sentinel::getUser()->roles()->first()->slug == 'super admin')
-                            return redirect('/dashboard/persensi');
+                            return redirect('/dashboard');
                         elseif (Sentinel::getUser()->roles()->first()->slug == 'user')
                             return redirect('/user');
                     } else {
