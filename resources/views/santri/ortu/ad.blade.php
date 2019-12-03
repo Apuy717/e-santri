@@ -60,11 +60,11 @@
 
       <div class="form-group col-lg-6 mt-2">
         <label for="tgl_lahir">Tanggal Lahir Ayah:</label>
-        <input type="button" class="form-control input-tanggal" name="tgl_lahir" id="tanggal" required="on"/>
+        <input type="text" autocomplete="of" class="form-control input-tanggal" name="tgl_lahir" id="tanggal" required="on"/>
       </div>
       
       <div class="form-group col-lg-6 mt-2">
-        <label for="no_hp">No HP :</label>
+        <label for="text">No HP :</label>
         <input type="number" name="no_hp" class="form-control" id="no_hp" required="on">
       </div>
 
@@ -108,7 +108,7 @@
       </div>
 
       <div class="form-group col-lg-6 mt-2">
-        <label for="jurusan">Jurusan :</label>
+        <label for="jurusan">Keahlian Khusus :</label>
         <input type="text" class="form-control" name="jurusan" id="jurusan" placeholder="jurusan" />
       </div>
 
@@ -118,7 +118,7 @@
       </div>
 
       <div class="form-group col-lg-6 mt-2">
-        <label for="penghasilan">Penghasilan :</label>
+        <label for="penghasilan">Penghasilan Perbulan :</label>
         <input type="text" class="form-control" name="penghasilan" id="penghasilan" placeholder="penghasilan"/>
       </div>
 

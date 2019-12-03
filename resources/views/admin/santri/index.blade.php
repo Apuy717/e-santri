@@ -54,7 +54,7 @@
                   		@if($u->user_NIM == $a->NIM)
                   			<tr>
                           <!-- <input type="hidden" name="tes" id="sa" value="{{$u->user_NIM}}"> -->
-		                  		<td>{{$u->user_NIM}}></td>
+		                  		<td>{{$u->user_NIM}}</td>
                   				<td>{{$a->first_name}} {{$a->last_name}}</td>
                   				<td>{{$u->alamat}}</td>
                   				<td>{{$u->awal_mondok}}</td>
