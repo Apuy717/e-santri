@@ -19,6 +19,13 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
       <!-- Nav Item - Dashboard -->
+    @if(Sentinel::Check() && Sentinel::getUser()->roles()->first()->slug == 'super admin' || Sentinel::getUser()->roles()->first()->slug == 'admin')
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/dashboard')}}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{url('/user')}}">
           <i class="fa fa-home"></i>

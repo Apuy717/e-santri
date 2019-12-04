@@ -3,13 +3,14 @@
 @section('title')
   Login My Account 
 @endsection
-
+<br><br>
 <div class="container-fluid">
-  @if (Session('error'))
-    div class="alert alert-danger alert-block">
-      <button type="button" class="close" data-dismiss="alert">×</button> 
-  <strong>{{ Session('error')}}</strong>
-  @endif
+    @if (Session('error'))
+      <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+      <strong>{{ Session('error')}}</strong>
+    </div>
+   @endif
 
 <div class="container-fluid">
     @if ($message = Session::get('success'))

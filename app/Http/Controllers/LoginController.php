@@ -71,7 +71,7 @@ class LoginController extends Controller
                 
             } catch (ThrottlingException $e) {
                 $delay = $e->getDelay();
-                return redirect()->back()->with(['error' => "You are banned for $delay seconds"]);
+                return redirect()->back()->with(['error' => "Anda Di Blokir Sementara Harap tunggu  $delay seconds"]);
 
             } catch (NotActivatedException $e) {
                 return redirect()->back()->with(['error' => 'akun anda belum terverifikasi Harap Hubungi Pengurus Pondok']);
