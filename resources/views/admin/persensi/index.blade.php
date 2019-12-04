@@ -106,10 +106,11 @@ $(document).ready(function(){
             scanner.start(cameras[1]);
         } else {
           console.error('No cameras found.');
-          swal("Woro-Woro", "Ora Enek Kmera yo gak Knek", "warning");
+          swal("Woro-Woro", "Lapo Koe Block Camera E Broooo", "warning");
         }
       }).catch(function (e) {
         console.error(e);
+        swal("Woro-Woro", "Ora Enek Kmera yo gak Knek", "warning");
       });
 
     </script>
