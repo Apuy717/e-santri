@@ -16,10 +16,13 @@
               <strong>{{ $message }}</strong>
           </div>
           @endif <br>
+        </div>
  <div class="container-fluid">
+
     <button type="text" class="button">filter</button>
             <form  action="/dashboard/persensi/alfa" method="post">
             {{ csrf_field() }}
+            <input type="text" name="" id="jam" onclick="return function waktu()">
                 <select id="pilih" name="waktu_id">
                     <option value="1">magrib</option>
                     <option value="2">isya</option>
@@ -40,10 +43,22 @@
         <button type="submit" name="submit">simpan</button>
         
     </form><br>
+    <input type="time" name="">
+
+<!-- <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" id="jam"></li>
+  </ol>
+</nav> -->
 
 
 <video id="preview" class="img-fluid img-thumbnail mx-auto d-block" alt="..."></video>
 <audio id="beep" src="{{url('audio/beep.mp3')}}"></audio>
+<audio id="sdh_absen" src="{{url('audio/ori_sdh.mp3')}}"></audio>
+<audio id="tolak" src="{{url('audio/no_access_ori.mp3')}}"></audio>
+<audio id="telat" src="{{url('audio/telat_ori.mp3')}}"></audio>
+
+</div>
 
 @endsection
 
@@ -60,7 +75,7 @@ $(document).ready(function(){
         });
     });
 
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),mirror:false});
       scanner.addListener('scan', function (content) {
         var data = content;
         console.log(data);
@@ -85,7 +100,7 @@ $(document).ready(function(){
                                 timer: 1500
                               });
                                 isBusy=false;
-                                document.getElementById('beep').play();
+                                document.getElementById('sdh_absen').play();
                           }else if (data.status == true) {
                                 swal({
                                 title: "Selamat",
@@ -97,14 +112,42 @@ $(document).ready(function(){
                               });
                             document.getElementById('beep').play();
                             isBusy=false;
+                          }else if (data.status == "telat") {
+                                swal({
+                                title: "Peringatan !!!",
+                                text: data.message,
+                                type: "warning",
+                                showConfirmButton: false,
+                                showCancelButton: false,
+                                timer: 1500
+                              });
+                                isBusy=false;
+                                document.getElementById('telat').play();
+
+                          } else if (data.status == "gagal" ) {
+                                swal({
+                                title: "Peringatan !!!",
+                                text: data.request+' '+data.message,
+                                type: "warning",
+                                showConfirmButton: false,
+                                showCancelButton: false,
+                                timer: 1500
+                              });
+                                isBusy=false;
+                                // document.getElementById('beep').play();
+                                document.getElementById('tolak').play();
                      }
                 }
             });
       });
       Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
         if (cameras.length > 1) {
-            scanner.start(cameras[1]);
-        } else {
+          scanner.start(cameras[1]);
+        }else{
+          scanner.start(cameras[0]);
+        }
+      } else {
           console.error('No cameras found.');
           swal("Woro-Woro", "Lapo Koe Block Camera E Broooo", "warning");
         }
@@ -112,6 +155,15 @@ $(document).ready(function(){
         console.error(e);
         swal("Woro-Woro", "Ora Enek Kmera yo gak Knek", "warning");
       });
+
+
+      window.setTimeout("waktu()", 1000);
+ 
+  function waktu() {
+    var waktu = new Date();
+    setTimeout("waktu()", 1000);
+    document.getElementById("jam").innerHTML = waktu.getHours() +' : '+waktu.getMinutes()+' : '+waktu.getSeconds()+', Wib';;
+  }
 
     </script>
 @endsection

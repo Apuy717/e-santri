@@ -18,6 +18,8 @@ class AbsenController extends Controller
     {
     	date_default_timezone_set('Asia/Jakarta');
     	$jam = date('H:i:s');
+        $jam_ahir = date('22:00:00');
+        //dd($jam, $jam_ahir);
     	$tgl = date('Y:m:d');
     	$H =1;
         $wk =2;
@@ -25,25 +27,42 @@ class AbsenController extends Controller
         $user = User::where('NIM', $request->user_NIM)->get();
         $fn = [];
         $ln = [];
+        $nim = [];
         foreach ($user as $u ) {
+            $nim[] = $u->NIM;
             $fn[] = $u->first_name;
             $ln[] = $u->last_name;
         }
-        
-        $absen = Persensi::where('user_NIM', $request->user_NIM)->where('tgl',$tgl)->where('waktu_id', $request->waktu_id)->get();
-        if (count($absen) > 0) {
-            $absen['status']=false;
-            $absen['first'] = $fn;
-            $absen['last'] = $ln;
-            $absen['message']="Telah Mengisi Daftar Hadir Sebelumnya !";
-        } else {
-            $absen = Persensi::create(['user_NIM'=>$request->user_NIM, 'tgl'=>$tgl, 'waktu'=>$jam, 'H'=>$H, 'waktu_id'=>$request->waktu_id]);
-            $absen['status']=true;
-            $absen['first'] = $fn;
-            $absen['last'] = $ln;
-            $absen['message']="Berhasil Absen";
-        }
-        return response()->json($absen);
+         $cek[] = $request->user_NIM;
+        // if($cek == $nim){
+        //     dd("sama");
+        // }else{
+        //     dd("tidak sama");
+        // }
+        //  dd($nim, $cek);
+            $absen = Persensi::where('user_NIM', $request->user_NIM)->where('tgl',$tgl)->where('waktu_id', $request->waktu_id)->get();
+            if (count($absen) > 0) {
+                $absen['status']=false;
+                $absen['first'] = $fn;
+                $absen['last'] = $ln;
+                $absen['message']="Telah Mengisi Daftar Hadir Sebelumnya !";
+            }elseif ($jam < $jam_ahir) {
+                if ($cek == $nim) {
+                $absen = Persensi::create(['user_NIM'=>$request->user_NIM, 'tgl'=>$tgl, 'waktu'=>$jam, 'H'=>$H, 'waktu_id'=>$request->waktu_id]);
+                $absen['status']=true;
+                $absen['first'] = $fn;
+                $absen['last'] = $ln;
+                $absen['message']="Berhasil Absen";
+            }else{
+                $absen['request']=$request->user_NIM;
+                $absen['status'] ="gagal";
+                $absen['message']="Tidak Ada NIM INI";
+            }
+            }elseif($jam > $jam_ahir){
+                $absen['status'] = "telat";
+                $absen['message']="HAH Sayang sekali anda sudah telat";
+            }
+            return response()->json($absen); 
     }
 
     public function alfa_store(Request $request)
