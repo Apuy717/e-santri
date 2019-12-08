@@ -1,7 +1,7 @@
 @extends('layout.user')
 
 @section('title')
-  Admin-BackEnd Detile
+  Santri | Update Profile Orang Tua
 @endsection
 
 @section('header')

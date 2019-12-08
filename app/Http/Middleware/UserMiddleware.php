@@ -17,9 +17,9 @@ class UserMiddleware
     {
         if (Sentinel::check() && Sentinel::getUser()->roles()->first()->slug == 'user') {
             return $next($request);
-        }elseif (Sentinel::check() || Sentinel::getUser()->roles()->first()->slug == 'super admin') {
+        }elseif (Sentinel::check() && Sentinel::getUser()->roles()->first()->slug == 'super admin') {
             return $next($request);
-        }elseif (Sentinel::check() || Sentinel::getUser()->roles()->first()->slug == 'admin') {
+        }elseif (Sentinel::check() && Sentinel::getUser()->roles()->first()->slug == 'admin') {
             return $next($request);
         }
         else
