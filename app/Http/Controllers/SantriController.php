@@ -88,6 +88,7 @@ class SantriController extends Controller
     {
         $this->validate($request, [
             'gambar' => 'required|file|image|mimes:jpeg,png,jpg|max:10120',
+            
         ]);
  
         // menyimpan data file yang diupload ke variabel $file

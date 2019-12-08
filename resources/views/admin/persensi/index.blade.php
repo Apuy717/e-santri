@@ -97,7 +97,7 @@ $(document).ready(function(){
                                 type: "warning",
                                 showConfirmButton: false,
                                 showCancelButton: false,
-                                timer: 1500
+                                timer: 3000
                               });
                                 isBusy=false;
                                 document.getElementById('sdh_absen').play();
@@ -119,7 +119,7 @@ $(document).ready(function(){
                                 type: "warning",
                                 showConfirmButton: false,
                                 showCancelButton: false,
-                                timer: 1500
+                                timer: 3000
                               });
                                 isBusy=false;
                                 document.getElementById('telat').play();
@@ -131,7 +131,7 @@ $(document).ready(function(){
                                 type: "warning",
                                 showConfirmButton: false,
                                 showCancelButton: false,
-                                timer: 1500
+                                timer: 9500
                               });
                                 isBusy=false;
                                 // document.getElementById('beep').play();

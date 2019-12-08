@@ -161,6 +161,6 @@
           // save as image
           Canvas2Image.saveAsImage(canvas, w, h, type, f);
       })
-    });
+    });z
  </script>
 @endsection
