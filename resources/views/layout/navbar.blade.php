@@ -11,7 +11,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <!-- <i class="fas fa-laugh-wink"></i> -->
         </div>
-        <i><img width="180px;" class="mt-4" src="{{url('santri/img/layout/ked1.png')}}"></i>
+        <img class="mt-4 ked" src="{{url('santri/img/layout/ked1.png')}}">
         <!-- <div class="sidebar-brand-text mx-3">E-Santri <sup>1</sup></div> -->
       </a>
 

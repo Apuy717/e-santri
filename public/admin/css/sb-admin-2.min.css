@@ -55,6 +55,9 @@
 		width: 20%;
 		font-size: 0.8em;
 	}
+	.ked{
+		width: 80px;
+	}
 }
 @media (min-width: 992px){
 	.width{
@@ -71,6 +74,9 @@
 	}
 	#content-30{
 		font-size: 1.2em;
+	}
+	.ked{
+		width: 180px;
 	}
 }
 

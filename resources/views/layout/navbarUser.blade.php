@@ -14,7 +14,7 @@
             <span>Pondok Pesantren</span>
             <h3>Kedunglo</h3>
           </div> -->
-          <i><img width="180px;" class="mt-4" src="{{url('santri/img/layout/ked1.png')}}"></i>
+          <i><img class="mt-4 ked" src="{{url('santri/img/layout/ked1.png')}}"></i>
         </a>
       </div>
       <!-- Divider -->
