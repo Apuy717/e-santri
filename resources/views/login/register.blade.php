@@ -1,4 +1,4 @@
-@extends('layout.header')
+@include('layout.header')
 
 @section('title')
   Kedonglo e-santri | Registrasi
