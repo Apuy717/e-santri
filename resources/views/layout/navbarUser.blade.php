@@ -9,15 +9,16 @@
       <!-- Sidebar - Brand -->
       <div class="mt-2 pl-3">
          <a class="sidebar-brand p-0 text-left" href="{{url('/user')}}">
-          <div class="small">E-SANTRI<br></div>
+      <!--     <div class="small">E-SANTRI<br></div>
           <div class="sidebar-brand-text">
             <span>Pondok Pesantren</span>
             <h3>Kedunglo</h3>
-          </div>
+          </div> -->
+          <i><img width="180px;" class="mt-4" src="{{url('santri/img/layout/ked1.png')}}"></i>
         </a>
       </div>
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0 mt-4">
       <!-- Nav Item - Dashboard -->
     @if(Sentinel::Check() && Sentinel::getUser()->roles()->first()->slug == 'super admin' || Sentinel::getUser()->roles()->first()->slug == 'admin')
       <li class="nav-item">

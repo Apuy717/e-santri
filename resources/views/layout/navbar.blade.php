@@ -9,13 +9,14 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <!-- <i class="fas fa-laugh-wink"></i> -->
         </div>
-        <div class="sidebar-brand-text mx-3">E-Santri <sup>1</sup></div>
+        <i><img width="180px;" class="mt-4" src="{{url('santri/img/layout/ked1.png')}}"></i>
+        <!-- <div class="sidebar-brand-text mx-3">E-Santri <sup>1</sup></div> -->
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider my-0 mt-4">
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
