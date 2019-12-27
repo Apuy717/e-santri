@@ -8,7 +8,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
-        <div class="sidebar-brand-icon rotate-n-15">
+        <div class="sidebar-brand-icon">
           <!-- <i class="fas fa-laugh-wink"></i> -->
         </div>
         <img class="mt-4 ked" src="{{url('santri/img/layout/ked1.png')}}">

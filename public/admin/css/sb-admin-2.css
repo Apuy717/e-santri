@@ -10216,7 +10216,8 @@ a:focus {
 }
 
 .sidebar .sidebar-brand .sidebar-brand-text {
-  display: none;
+  display: block;
+  width: 10px;
 }
 
 .sidebar hr.sidebar-divider {

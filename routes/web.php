@@ -76,6 +76,9 @@ Route::group(['middleware' => 'user'], function(){
 Route::get('/active/{email}/{activationCode}', 'AdminController@aktif');
 Route::post('/logo', 'LoginController@logout');
 
+//Api
+Route::get('get/kamar', 'Rest\restController@index');
+
 
 
 
