@@ -68,7 +68,7 @@ Backand | Master Data Santri
               </td>
               <td>
                 <a href="/dashboard/master/qrcode/{{$u->user_NIM}}" class="GetData" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-id-card fa-2x"></i></a>
-                <a href="/dashboard/master/detapi/{{$u->user_NIM}}" data-toggle="modal" data-target=".bd-example-modal-xl" class="GetDataDetile"><i class="fas fa-eye fa-2x"></i></a>
+                <a href="/dashboard/master/detapi/{{$u->user_NIM}}" data-toggle="modal" data-target=".bd-example-modal-xl" class="GetDataDetile"><i class="fas fa-eye fa-2x" id="ck"></i></a>
               </td>
             </tr>
             @endif
@@ -149,7 +149,7 @@ Backand | Master Data Santri
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-success">Detail Santri</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id="clr" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -364,7 +364,7 @@ Backand | Master Data Santri
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="clrs" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -379,7 +379,16 @@ Backand | Master Data Santri
 <script type="text/javascript">
   $(document).ready(function() {
     geting()
+    $("#clr").click(function() {
+      $('p').empty();
+      $('#upload-img').attr('src', '');
+    });
+    $("#clrs").click(function() {
+      $('p').empty();
+      $('#upload-img').attr('src', '');
+    });
   });
+
 
   function geting() {
     $('.GetData').click(function(e) {
