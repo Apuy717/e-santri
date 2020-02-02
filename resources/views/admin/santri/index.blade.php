@@ -20,7 +20,7 @@ Backand | Master Data Santri
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataku" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>NIM</th>
@@ -67,8 +67,8 @@ Backand | Master Data Santri
                 @endif
               </td>
               <td>
-                <a href="/dashboard/master/qrcode/{{$u->user_NIM}}" class="GetData" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-id-card fa-2x"></i></a>
-                <a href="/dashboard/master/detapi/{{$u->user_NIM}}" data-toggle="modal" data-target=".bd-example-modal-xl" class="GetDataDetile"><i class="fas fa-eye fa-2x" id="ck"></i></a>
+                <a href="/#" data-toggle="modal" data-target="#staticBackdrop" onclick="getData('{{$u->user_NIM}}')"><i class="fas fa-id-card fa-2x"></i></a>
+                <a href="/#" data-toggle="modal" data-target=".bd-example-modal-xl" onclick="getDataDetail('{{$u->user_NIM}}')"><i class="fas fa-eye fa-2x" id="ck"></i></a>
               </td>
             </tr>
             @endif
@@ -100,12 +100,12 @@ Backand | Master Data Santri
             border-radius:10px;
             background-color: #eeeeee0f;">
           <div class="col" style="text-align:center;font-weight:bold">
-            <p>
+            <label>
               KARTU PRESENSI SANTRI
-            </p>
-            <p>
+            </label>
+            <label>
               PONDOK PESANTREAN KEDUNGLO
-            </p>
+            </label>
           </div>
           <hr>
           <div class="row">
@@ -128,7 +128,7 @@ Backand | Master Data Santri
               <div class="row">
                 <div class="col-4">NO HP</div>
                 <div class="col-1">:</div>
-                <div class="col" id="email"></div>
+                <div class="col-1" id="email"></div>
               </div>
             </div>
             <div class="col-5" style="">
@@ -377,78 +377,93 @@ Backand | Master Data Santri
 <script src="{{url('admin/vendor/canvas2image2.js')}}"></script>
 
 <script type="text/javascript">
+  var base_url = "{{url('dashboard/master/detapi')}}";
+  var qr_url = "{{url('/dashboard/master/qrcode')}}";
   $(document).ready(function() {
-    geting()
-    $("#clr").click(function() {
-      $('p').empty();
-      $('#upload-img').attr('src', '');
-    });
-    $("#clrs").click(function() {
-      $('p').empty();
-      $('#upload-img').attr('src', '');
+    $('#dataku').DataTable({
+      "paging": true,
+      "ordering": true,
+      "info": true
     });
   });
 
 
-  function geting() {
-    $('.GetData').click(function(e) {
-      e.preventDefault();
-      $.ajax({
-        type: 'get',
-        url: $(this).attr('href'),
-        success: function(response) {
-          // console.log(response);
-          $('#NIM').html(response[0].NIM);
-          $('#nama').html(response[0].first_name + ' ' + response[0].last_name);
-          $('#mondok').html(response[0].santri[0].awal_mondok);
-          $('#email').html(response[0].santri[0].no_hp);
-          $('[name=nim]').val(response[0].NIM);
-          generate_qrcode();
-        }
-      });
-    })
-    $('.GetDataDetile').click(function(e) {
-      e.preventDefault();
-      $.ajax({
-        type: 'get',
-        url: $(this).attr('href'),
-        success: function(data) {
-          var getDa = data[0];
-          var getDaa = data[0].santri[0];
-          var getDaaa = data[0].santri[0].ortu[0];
-          var uri = 'https://kedunglo.telulast.com/santri/img/';
-          var getImg = uri + getDaa.gambar;
-          // console.log(uri + getDaa.gambar);
-          // informasi santri
-          $('#upload-img').attr('src', getImg)
-          $('#nim').html(': ' + getDa.NIM)
-          $('#nama2').html(': ' + getDa.first_name + ' ' + getDa.last_name)
-          $('#alamat').html(': ' + getDaa.alamat)
-          $('#tgl2').html(': ' + getDaa.tempat_lahir + ', ' + getDaa.tgl_lahir)
-          $('#jk2').html(': ' + data[0].santri[0].jk)
-          $('#anak2').html(': ' + getDaa.anake_ke)
-          $('#no2').html(': ' + getDaa.no_hp)
-          $('#fb').html(': ' + getDaa.sosial_media)
-          $('#asal2').html(': ' + getDaa.asal_sekolah)
-          $('#awalmdk2').html(': ' + getDaa.awal_mondok)
-          $('#smstr2').html(': ' + getDaa.kls.kelas)
-          $('#st').html(': ' + getDaa.status)
-          // informasi orang tua
-          $('#namaO').html(': ' + getDaaa.nama_ayah)
-          $('#namaOi').html(': ' + getDaaa.nama_ibu)
-          $('#tglO').html(': ' + getDaaa.tgl_lahir)
-          $('#agamaO').html(': ' + getDaaa.agama)
-          $('#pengamal').html(': ' + getDaaa.pengamal)
-          $('#negaraO').html(': ' + getDaaa.negara)
-          $('#pendidikanO').html(': ' + getDaaa.pendidikan_akhir)
-          $('#jurusanO').html(': ' + getDaaa.jurusan)
-          $('#alamatO').html(': ' + getDaaa.alamat)
-          $('#noO').html(': ' + getDaaa.no_hp)
-          $('#pekerjaanO').html(': ' + getDaaa.pekerjaan)
-          $('#penghasilanO').html(': ' + getDaaa.penghasilan)
-        }
-      });
-    })
+  function getData(id) {
+    // console.log(id);
+    var nim_qr = id;
+    $.ajax({
+      type: 'get',
+      url: qr_url + '/' + nim_qr,
+      success: function(response) {
+        // console.log(response);
+        $('#NIM').html(response[0].NIM);
+        $('#nama').html(response[0].first_name + ' ' + response[0].last_name);
+        $('#mondok').html(response[0].santri[0].awal_mondok);
+        $('#email').html(response[0].santri[0].no_hp);
+        $('[name=nim]').val(response[0].NIM);
+        generate_qrcode();
+      }
+    });
+  }
+
+  function getDataDetail(id) {
+    var id_santri = id;
+    $.ajax({
+      type: 'get',
+      url: base_url + '/' + id_santri,
+      success: function(data) {
+        var getDa = data[0];
+        var getDaa = data[0].santri[0];
+        var getDaaa = data[0].santri[0].ortu[0];
+        var uri = 'https://kedunglo.telulast.com/santri/img/';
+        var getImg = uri + getDaa.gambar;
+
+        // console.log(getDaaa.nama_ayah);
+        // return;
+        // console.log(uri + getDaa.gambar);
+        // informasi santri
+        $('#upload-img').attr('src', getImg)
+        $('#nim').html(': ' + getDa.NIM)
+        $('#nama2').html(': ' + getDa.first_name + ' ' + getDa.last_name)
+        $('#alamat').html(': ' + getDaa.alamat)
+        $('#tgl2').html(': ' + getDaa.tempat_lahir + ' ' + getDaa.tgl_lahir)
+        $('#jk2').html(': ' + data[0].santri[0].jk)
+        $('#anak2').html(': ' + getDaa.anake_ke)
+        $('#no2').html(': ' + getDaa.no_hp)
+        $('#fb').html(': ' + getDaa.sosial_media)
+        $('#asal2').html(': ' + getDaa.asal_sekolah)
+        $('#awalmdk2').html(': ' + getDaa.awal_mondok)
+        $('#smstr2').html(': ' + getDaa.kls.kelas)
+        $('#st').html(': ' + getDaa.status)
+        // informasi orang tua
+        // nilai default
+        $('#namaO').html(': -Belum Melengkapi')
+        $('#namaOi').html(': -Belum Melengkapi')
+        $('#tglO').html(': -Belum Melengkapi')
+        $('#agamaO').html(': -Belum Melengkapi')
+        $('#pengamal').html(': -Belum Melengkapi')
+        $('#negaraO').html(': -Belum Melengkapi')
+        $('#pendidikanO').html(': -Belum Melengkapi')
+        $('#jurusanO').html(': -Belum Melengkapi')
+        $('#alamatO').html(': -Belum Melengkapi')
+        $('#noO').html(': -Belum Melengkapi')
+        $('#pekerjaanO').html(': -Belum Melengkapi')
+        $('#penghasilanO').html(': -Belum Melengkapi')
+        // value
+        $('#namaO').html(': ' + getDaaa.nama_ayah)
+        $('#namaOi').html(': ' + getDaaa.nama_ibu)
+        $('#tglO').html(': ' + getDaaa.tgl_lahir)
+        $('#agamaO').html(': ' + getDaaa.agama)
+        $('#pengamal').html(': ' + getDaaa.pengamal)
+        $('#negaraO').html(': ' + getDaaa.negara)
+        $('#pendidikanO').html(': ' + getDaaa.pendidikan_akhir)
+        $('#jurusanO').html(': ' + getDaaa.jurusan)
+        $('#alamatO').html(': ' + getDaaa.alamat)
+        $('#noO').html(': ' + getDaaa.no_hp)
+        $('#pekerjaanO').html(': ' + getDaaa.pekerjaan)
+        $('#penghasilanO').html(': ' + getDaaa.penghasilan)
+      }
+    });
   }
 
   function generate_qrcode() {
