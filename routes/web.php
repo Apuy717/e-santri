@@ -30,6 +30,7 @@ Route::group(['middleware' => 'visitors'], function () {
 Route::group(['middleware' => 'admin'], function () {
 	//dashboard
 	Route::get('/dashboard', 'AdminController@admin');
+	// Route::get('/dashboard/graf', 'AdminController@graff');
 	Route::get('/dashboard/verifikasi', 'AdminController@verif');
 	//gedung / asrama
 	Route::get('/dashboard/gedung', 'Gedung\GedungController@index');

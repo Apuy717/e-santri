@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Persensi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Persensi\Persensi;
+use App\Santri;
 use App\User;
 
 class AbsenController extends Controller
@@ -109,6 +110,7 @@ class AbsenController extends Controller
 
 
         $persensi = Persensi::whereBetween('tgl', [$start_date, $end_date])->get();
+        // $persensi2 = User::with(['santri', 'santri.persensi']);
 
         return view('admin/monitoring/index', ['persensi' => $persensi]);
     }

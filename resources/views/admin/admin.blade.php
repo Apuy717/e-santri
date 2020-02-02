@@ -107,7 +107,7 @@ Admin-BackEnd Detile
         },
         series: [{
             name: 'Jml',
-            data: [{!!json_encode($tes) !!}, 14, 24, 50]
+            data: [ 1,1,1,1]
 
         }]
     });

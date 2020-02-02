@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    protected $table ='users';
+    protected $table = 'users';
     use Notifiable;
 
     /**
@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'NIM','name', 'email', 'password',
+        'id', 'NIM', 'name', 'email', 'password',
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function activation()
     {
-        return $this->hasMany('App\Activation','user_id','id');
+        return $this->hasMany('App\Activation');
     }
 
     public function santri()
@@ -51,5 +51,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Persensi\Persensi', 'user_NIM', 'NIM');
     }
-
 }
