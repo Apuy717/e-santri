@@ -8,6 +8,20 @@ Backand | Master Data Santri
 <div class="container-fluid">
   <h1>Data master santri</h1>
   <hr>
+  <form action="{{url('/dashboard/master/santri')}}" method="get">
+    <div class="input-group col-6">
+      <select class="custom-select" name="keyword" id="inputGroupSelect04">
+        <option selected value="">Pilih</option>
+        @foreach($asr as $a)
+        <option value="{{$a->asrama}}">{{$a->asrama}}</option>
+        @endforeach
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="submit">filter</button>
+      </div>
+    </div>
+  </form>
+  <hr>
   @if ($message = Session::get('success'))
   <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -20,7 +34,7 @@ Backand | Master Data Santri
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataku" width="100%" cellspacing="0">
+        <table class="table table-bordered " id="dataku" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>NIM</th>
@@ -44,35 +58,22 @@ Backand | Master Data Santri
             </tr>
           </tfoot>
           <tbody>
-            @foreach($santri as $u) @foreach($user as $a)
-            @if($u->user_NIM == $a->NIM)
+            @foreach($santri as $san)
+            @if($san->NIM == $san->user_NIM )
             <tr>
-              <!-- <input type="hidden" name="tes" id="sa" value="{{$u->user_NIM}}"> -->
-              <td>{{$u->user_NIM}}</td>
-              <td>{{$a->first_name}} {{$a->last_name}}</td>
-              <td>{{$u->alamat}}</td>
-              <td>{{$u->smester->smester}}</td>
-              <td>{{$u->kamar->kamar}}</td>
+              <td>{{$san->NIM}}</td>
+              <td>{{$san->first_name}} {{$san->last_name}}</td>
+              <td>{{$san->alamat}}</td>
+              <td>{{$san->smester}}</td>
+              <td>{{$san->kamar}}</td>
+              <td>{{$san->kelas}} | {{$san->madrasah}}</td>
               <td>
-                {{$u->kls_id}}
-                @if($u->kls_id > 0)
-                |
-                @endif
-                @if($u->madrasah_id ==1)
-                Idad
-                @elseif($u->madrasah_id ==2)
-                Mi
-                @elseif($u->madrasah_id == 3)
-                Mts
-                @endif
-              </td>
-              <td>
-                <a href="/#" data-toggle="modal" data-target="#staticBackdrop" onclick="getData('{{$u->user_NIM}}')"><i class="fas fa-id-card fa-2x"></i></a>
-                <a href="/#" data-toggle="modal" data-target=".bd-example-modal-xl" onclick="getDataDetail('{{$u->user_NIM}}')"><i class="fas fa-eye fa-2x" id="ck"></i></a>
+                <a href="/#" data-toggle="modal" data-target="#staticBackdrop" onclick="getData('{{$san->NIM}}')"><i class="fas fa-id-card fa-2x"></i></a>
+                <a href="/#" data-toggle="modal" data-target=".bd-example-modal-xl" onclick="getDataDetail('{{$san->NIM}}')"><i class="fas fa-eye fa-2x" id="ck"></i></a>
               </td>
             </tr>
             @endif
-            @endforeach @endforeach
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -375,6 +376,14 @@ Backand | Master Data Santri
 <script src="{{url('admin/vendor/jquery-qrcode-0.17.0.js')}}"></script>
 <script src="{{url('admin/vendor/html2canvas.min.js')}}"></script>
 <script src="{{url('admin/vendor/canvas2image2.js')}}"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
 
 <script type="text/javascript">
   var base_url = "{{url('dashboard/master/detapi')}}";
@@ -383,7 +392,11 @@ Backand | Master Data Santri
     $('#dataku').DataTable({
       "paging": true,
       "ordering": true,
-      "info": true
+      "info": true,
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'csv', 'pdf', 'print'
+      ]
     });
   });
 

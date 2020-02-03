@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Santri;
 use App\Asrama;
@@ -45,8 +46,12 @@ class AdminController extends Controller
 	}
 	public function verif()
 	{
-		$user = User::all();
-		//dd($user);
+		// $user = User::all();
+		$user = DB::table('users')
+			->leftJoin('activations', 'activations.user_id', '=', 'users.id')
+			->where('completed', 0)
+			->get();
+		// dd($user);
 		return view('admin/user/verifikasi', ['user' => $user]);
 	}
 

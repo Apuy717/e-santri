@@ -51,20 +51,18 @@ Admin-BackEnd Detile
               <td>
                 <center><img width="150px;" src="{{ url('/santri/verif/'.$u->gambar )}}" alt="..."></center>
               </td>
-              @foreach($u->activation as $a)
-              @if($a->completed > 0)
+              @if($u->completed > 0)
               <td>Aktif</td>
               @else
               <td>NonAktif</td>
               @endif
               <td>
-                @if ($a->completed < 1) <a href="/active/{{$u->email}}/{{$a->code}}" class="badge badge-warning container">verifikasi</a>
+                @if ($u->completed < 1) <a href="/active/{{$u->email}}/{{$u->code}}" class="badge badge-warning container">verifikasi</a>
                   @else
                   <span class="badge badge-success container">Success</span>
                   @endif
               </td>
             </tr>
-            @endforeach
             @endforeach
 
           </tbody>
