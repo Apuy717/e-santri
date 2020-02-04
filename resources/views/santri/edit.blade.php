@@ -50,7 +50,7 @@ Santri | Update Profile
 
           <div class="form-group text-left">
             <h4>Isi Informasi Pribadi</h4>
-            <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true">
+            <input id="input-b1" name="gambar" type="file" class="file" data-show-upload="false" data-show-remove="true" data-show-cancel="false" data-browse-on-zone-click="true">
             <div class="form-group mt-3">
               <label for="no_hp">Nomer HP :</label>
               <input type="number" name="no_hp" class="form-control" id="no_hp" required="on" value="{{$santri->no_hp}}">

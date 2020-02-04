@@ -29,8 +29,11 @@ Kedonglo e-santri | Registrasi
 
                     <form class="user" action="{{url('/register')}}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
-                      <label class="small" for="input_gambar">Upload Foto Bukti Pembayaran Pondok</label><br>
-                      <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true"><br>
+                      <!-- <center>
+                        <label class="small" for="input_gambar">Upload Foto Bukti Pembayaran Pondok</label><br>
+                        <input id="input-b2" name="gambar" type="file" class="file" data-show-preview="false">
+                        <!-- <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true"><br>
+                      </center>-->
                       <div class="form-group">
                         <input type="number" class="form-control" name="NIM" id="NIM" placeholder="Nomor Induk Santri">
                       </div>
@@ -39,7 +42,7 @@ Kedonglo e-santri | Registrasi
 
                         <div class="col-sm-6">
                           <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nama Depan">
-                        </div>
+                        </div><br><br>
                         <div class="col-sm-6">
                           <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Nama Belakang">
                         </div>
@@ -54,6 +57,10 @@ Kedonglo e-santri | Registrasi
                       <div class="form-group">
                         <input type="password" class="form-control" name="password" id="exampleRepeatPassword" placeholder="Ketik Ulang Password">
                       </div>
+                      <div>
+                        <label class="small" for="input_gambar">Upload Foto Bukti Pembayaran Pondok</label><br>
+                        <input id="input-b2" name="gambar" type="file" class="file" data-show-upload="false" data-show-remove="true" data-show-cancel="false" data-show-preview="false">
+                      </div><br>
 
                       <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
 

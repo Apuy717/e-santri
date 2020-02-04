@@ -36,7 +36,7 @@ Santri | Update Profile Orang Tua
         <div class="col-xl-10">
           <div class="form-group">
             <h5>Ubah Foto Keluarga / Ayah / Ibu / Wali</h5>
-            <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true" value="{{$ortu->gambar}}">
+            <input id="input-b1" name="gambar" type="file" class="file" data-show-upload="false" data-show-remove="true" data-show-cancel="false" data-browse-on-zone-click="true" value="{{$ortu->gambar}}">
 
             <input type="hidden" name="users_NIM" class="form-control" id="users_NIM" placeholder="user_NIM" required="on" value="{{Sentinel::getUser()->NIM}}">
 

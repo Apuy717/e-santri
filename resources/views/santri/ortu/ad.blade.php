@@ -43,7 +43,7 @@ Santri | Add Profile Orang Tua
 
           <div class="form-group mt-3">
             <h4>Upload Foto Keluarga / Ayah / Ibu / Wali</h4>
-            <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true">
+            <input id="input-b1" name="gambar" type="file" class="file" data-show-upload="false" data-show-remove="true" data-show-cancel="false" data-browse-on-zone-click="true">
             <div class="form-group">
               <input type="hidden" name="users_NIM" class="form-control" id="users_NIM" placeholder="user_NIM" required="on" value="{{Sentinel::getUser()->NIM}}">
             </div>
