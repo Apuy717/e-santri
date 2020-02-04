@@ -35,20 +35,12 @@ Santri | Update Profile Orang Tua
 
         <div class="col-xl-10">
           <div class="form-group">
-
-            <div id="upload-img" class="rounded-circle bg-secondary justify-content-center">
-              <div class="form-group p-2 pt-5">
-                <label class="btn btn-light btn-sm btn-block mt-4" for="input_gambar">Upload Foto</label>
-                <input type="file" class="form-control " name="gambar" id="input_gambar" placeholder="gambar" data-rule="gambar" data-msg="Please enter a valid gambar" />
-              </div>
-            </div>
+            <h5>Ubah Foto Keluarga / Ayah / Ibu / Wali</h5>
+            <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true" value="{{$ortu->gambar}}">
 
             <input type="hidden" name="users_NIM" class="form-control" id="users_NIM" placeholder="user_NIM" required="on" value="{{Sentinel::getUser()->NIM}}">
 
             <div class="form-row mt-5 text-left">
-              <div class="form-group col-lg-12 text-center">
-                <h4>Ubah Informasi</h4>
-              </div>
               <div class="form-group col-lg-6 mt-2">
                 <label for="nama_ayah">Nama Ayah :</label>
                 <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" value="{{$ortu->nama_ayah}}" />
@@ -138,6 +130,8 @@ Santri | Update Profile Orang Tua
 @section('footer')
 <script src="{{url('admin/js/bootstrap-datetimepicker.js')}}"></script>
 <script src="{{url('admin/jquery_ui/jquery-ui.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/locales/LANG.js"></script>
 
 <script type="text/javascript">
   $(document).ready(function() {

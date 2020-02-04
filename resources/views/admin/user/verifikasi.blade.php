@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('title')
-Admin-BackEnd Detile
+Verifikas | User
 @endsection
 
 @section('conten')

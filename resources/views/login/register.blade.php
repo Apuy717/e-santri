@@ -29,8 +29,8 @@ Kedonglo e-santri | Registrasi
 
                     <form class="user" action="{{url('/register')}}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
-
-
+                      <label class="small" for="input_gambar">Upload Foto Bukti Pembayaran Pondok</label><br>
+                      <input id="input-b1" name="gambar" type="file" class="file" data-browse-on-zone-click="true"><br>
                       <div class="form-group">
                         <input type="number" class="form-control" name="NIM" id="NIM" placeholder="Nomor Induk Santri">
                       </div>
@@ -54,13 +54,6 @@ Kedonglo e-santri | Registrasi
                       <div class="form-group">
                         <input type="password" class="form-control" name="password" id="exampleRepeatPassword" placeholder="Ketik Ulang Password">
                       </div>
-                      <label class="small" for="input_gambar">Upload Foto Bukti Pembayaran Pondok</label><br>
-                      <div class="form-row">
-                        <div class="col-sm-5">
-                          <label class="btn btn-secondary btn-block" for="input_gambar">Choose File</label><br>
-                        </div>
-                      </div>
-                      <input type="file" name="gambar" id="input_gambar">
 
                       <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
 
@@ -94,14 +87,12 @@ Kedonglo e-santri | Registrasi
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/locales/LANG.js"></script>
 
 </body>
 

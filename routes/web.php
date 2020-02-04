@@ -32,6 +32,8 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::get('/dashboard', 'AdminController@admin');
 	// Route::get('/dashboard/graf', 'AdminController@graff');
 	Route::get('/dashboard/verifikasi', 'AdminController@verif');
+	Route::get('/dashboard/santri/undifined', 'AdminController@nodat');
+	Route::get('/dashboard/santri/undifined/delete/{id}', 'AdminController@hapus');
 	//gedung / asrama
 	Route::get('/dashboard/gedung', 'Gedung\GedungController@index');
 	Route::post('/dashboard/ad_kamar', 'Gedung\GedungController@store');

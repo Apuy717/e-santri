@@ -9,6 +9,7 @@ use App\Santri;
 use App\Asrama;
 use Activation;
 use Sentinel;
+use File;
 
 class AdminController extends Controller
 {
@@ -40,7 +41,25 @@ class AdminController extends Controller
 		foreach ($asrama as $asr) {
 			$datAs[] = $asr->asrama;
 		}
+
+		$san = Santri::where('kamar_id', 'P')->get();
+		$dat = [];
+		foreach ($san as $sa) {
+			$dat[] = $sa->jk;
+			$P = count($dat);
+		}
 		//dd($datAs);
+		// $graf = DB::table('santri')
+		// 	->Join('kamar', 'kamar.id', '=', 'santri.kamar_id')
+		// 	->Join('asrama', 'asrama.id', '=', 'kamar.asrama_id')
+		// 	->get();
+
+		// foreach ($graf as $ck) {
+		// 	$datee[] = $ck->asrama;
+		// 	if ($datAs === $ck->asrama) {
+		// 	}
+		// 	dd($datee);
+		// }
 
 		return view('admin/admin', ['tes' => $tes])->with(['L' => $L])->with(['P' => $P])->with(['datAs' => $datAs]);
 	}
@@ -63,5 +82,26 @@ class AdminController extends Controller
 			return redirect('/dashboard/verifikasi')->with('success', 'akun berhasil diverifikasi');
 		} else {
 		}
+	}
+
+	public function nodat()
+	{
+		$santri = Santri::select('user_NIM')->get()->toArray();
+		$query = DB::table('users')
+			->join('role_users', 'role_users.user_id', '=', 'users.id')
+			->where('role_id', 2)
+			->whereNotIn('NIM', $santri)
+			->get();
+
+		//dd($query);
+		return view('admin/user/nodat', ['query' => $query]);
+	}
+
+	public function hapus($id)
+	{
+		$user = User::where('id', $id)->first();
+		File::delete('public/santri/verif/' . $user->gambar);
+		User::where('id', $id)->delete();
+		return redirect()->back()->with('success', 'Data Berhasil Dihapus');
 	}
 }

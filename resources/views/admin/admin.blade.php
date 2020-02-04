@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('title')
-Admin-BackEnd Detile
+Admin-BackEnd
 @endsection
 
 @section('conten')
@@ -84,7 +84,7 @@ Admin-BackEnd Detile
             text: 'Jumlah Data Santi berdasarkan Jenis-kelamin'
         },
         xAxis: {
-            categories: {!!json_encode($datAs) !!},
+            categories:{!!json_encode($datAs)!!},
             crosshair: true
         },
         yAxis: {
@@ -106,8 +106,8 @@ Admin-BackEnd Detile
             }
         },
         series: [{
-            name: 'Jml',
-            data: [ 1,1,1,1]
+            name: 'ada',
+            data: [ 1,1,1,1,1,1,1,1,1,1,1,1,1]
 
         }]
     });
