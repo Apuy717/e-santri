@@ -39,7 +39,7 @@ class AdminController extends Controller
 		$asrama = Asrama::all();
 		$dataAs = [];
 		foreach ($asrama as $asr) {
-			$datAs[] = $asr->asrama;
+			$datAs[] = $asr->id;
 		}
 
 		$san = Santri::where('kamar_id', 'P')->get();
@@ -49,10 +49,21 @@ class AdminController extends Controller
 			$P = count($dat);
 		}
 		//dd($datAs);
+		// $as = Asrama::select('id')->get();
 		// $graf = DB::table('santri')
 		// 	->Join('kamar', 'kamar.id', '=', 'santri.kamar_id')
-		// 	->Join('asrama', 'asrama.id', '=', 'kamar.asrama_id')
+		// 	->where('asrama_id', $as)
 		// 	->get();
+		// $graf = Santri::with(['kamar'])->get()
+
+		// dd($graf);
+		// foreach ($graf as $gr) {
+		// 	$g[] = $gr->asrama_id;
+		// }
+		// foreach ($as as $a) {
+		// 	$ck[] = $a->id;
+		// }
+
 
 		// foreach ($graf as $ck) {
 		// 	$datee[] = $ck->asrama;

@@ -20,11 +20,12 @@ class LoginController extends Controller
     public function postRegister(Request $request)
     {
         $this->validate($request, [
+            'NIM' => 'required|max:19|unique:users',
             'gambar' => 'required|file|image|mimes:jpeg,png,jpg|max:10240',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
-            'first_name' => 'required|max:255',
-            'last_name' => 'max:255'
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50'
         ]);
 
         // menyimpan data file yang diupload ke variabel $file
